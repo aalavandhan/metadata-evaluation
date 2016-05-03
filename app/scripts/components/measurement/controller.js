@@ -3,18 +3,61 @@
   app.controller("c.components.measurement.Controller", [ "$scope", "c.data.Metadata",
     "c.util.services.StateHandler",
     function($scope, Metadata, StateHandler){
-      function defineScope(){
-        $scope.data = [ ];
 
+      function loadTypes(){
         var state = StateHandler.getInstance();
         state.initiate();
 
-        Metadata.fetchMeasurementData().then(function(r){
+        Metadata.fetchParserData().then(function(r){
+          $scope.contentTypes = _.keys(r);
+          $scope.contentTypes.push('NONE');
+          $scope.selectedType = 'NONE';
+          state.success();
+        }, function(){
+          state.fatal();
+        });
+      };
+
+      function loadDomains(){
+        var state = StateHandler.getInstance();
+        state.initiate();
+
+        Metadata.fetchCrawlerData().then(function(r){;
+          $scope.domains = _.keys(r);
+          $scope.domains.push('NONE');
+          $scope.selectedDomain = 'NONE';
+          state.success();
+        }, function(){
+          state.fatal();
+        });
+      };
+
+      function loadMeasurements(){
+
+        var state = $scope.state = StateHandler.getInstance();
+        state.initiate();
+
+        var selectedDomain = $scope.selectedDomain != 'NONE' ? $scope.selectedDomain : null;
+        var selectedType   = $scope.selectedType   != 'NONE' ? $scope.selectedType   : null;
+
+        Metadata.fetchMeasurementData(selectedDomain, selectedType).then(function(r){
           $scope.data = r;
           state.success();
         }, function(){
           state.fatal();
         });
+
+      };
+
+
+      function defineScope(){
+        $scope.data = [ ];
+
+        loadDomains();
+        loadTypes();
+        loadMeasurements();
+
+        $scope.loadMeasurements = loadMeasurements;
 
         $scope.options = {
           chart: {
@@ -95,12 +138,6 @@
         };
 
       };
-
-      // $scope.$watch("selectedType", function(nv){
-      //   if(nv){
-      //     $scope.data = [ $scope.dump[nv] ];
-      //   }
-      // })
 
       defineScope();
     }

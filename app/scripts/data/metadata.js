@@ -191,8 +191,35 @@ angular.module("c.data")
       return deferred.promise;
     };
 
-    Resource.fetchMeasurementData = function(){
+    Resource.fetchMeasurementData = function(domain, type){
       var deferred = $q.defer();
+
+      var q = { "term": { } };
+
+      if(domain){
+        q.term['crawl.domain'] = domain;
+      };
+
+      if(type){
+        q.term['content-type'] = type;
+      };
+
+      var req = {
+        "aggs" : {
+          "l1" : {
+            "terms" : { "field": "measurements.unit", "size": 15 },
+            "aggs": {
+              "stat" : { "extended_stats" : { "field" : "measurements.value", "sigma" : 1 } }
+            }
+          }
+        },
+        "size": 0
+      };
+
+      if(domain || type){
+        req.query = q;
+      };
+
 
       var parseResponse = function(r){
         var m = r.aggregations.l1.buckets;
@@ -217,17 +244,7 @@ angular.module("c.data")
           .value();
       };
 
-      Resource.search({
-        "aggs" : {
-          "l1" : {
-            "terms" : { "field": "measurements.unit", "size": 15 },
-            "aggs": {
-              "stat" : { "extended_stats" : { "field" : "measurements.value", "sigma" : 1 } }
-            }
-          }
-        },
-        "size": 0
-      }).$promise.then(function(response){
+      Resource.search(req).$promise.then(function(response){
         deferred.resolve(parseResponse(response));
       }, function(r){
         deferred.reject(r);

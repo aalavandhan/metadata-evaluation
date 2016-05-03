@@ -221,6 +221,36 @@ angular.module('metadataEvaluationApp').run(['$templateCache', function($templat
   $templateCache.put('app/scripts/components/measurement/template.html',
     "<div>\n" +
     "  <div class=\"row\">\n" +
+    "    <div class=\"col-md-4\">\n" +
+    "      <div class=\"form-group\">\n" +
+    "        <label>Mime Type</label>\n" +
+    "        <select ng-model=\"selectedType\" class=\"form-control\">\n" +
+    "          <option ng-repeat=\"d in contentTypes\" value=\"{{d}}\" data-ng-bind=\"d\"></option>\n" +
+    "        </select>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"col-md-4\">\n" +
+    "      <div class=\"form-group\">\n" +
+    "        <label>Crawled Domain</label>\n" +
+    "        <select ng-model=\"selectedDomain\" class=\"form-control\">\n" +
+    "          <option ng-repeat=\"d in domains\" value=\"{{d}}\" data-ng-bind=\"d\"></option>\n" +
+    "        </select>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"col-md-4\">\n" +
+    "      <div class=\"form-group\">\n" +
+    "        <label>&nbsp;</label>\n" +
+    "        <button class=\"btn btn-primary btn-block\"\n" +
+    "                data-ng-disabled=\"state.isWorking\"\n" +
+    "                data-ng-click=\"loadMeasurements()\">Refresh</button>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <hr />\n" +
+    "  <div class=\"row\">\n" +
     "    <div class=\"col-md-12\">\n" +
     "      <nvd3 options=\"options\" data=\"data\"></nvd3>\n" +
     "    </div>\n" +

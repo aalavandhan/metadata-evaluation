@@ -1,5 +1,35 @@
 <div>
   <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Mime Type</label>
+        <select ng-model="selectedType" class="form-control">
+          <option ng-repeat="d in contentTypes" value="{{d}}" data-ng-bind="d"></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Crawled Domain</label>
+        <select ng-model="selectedDomain" class="form-control">
+          <option ng-repeat="d in domains" value="{{d}}" data-ng-bind="d"></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>&nbsp;</label>
+        <button class="btn btn-primary btn-block"
+                data-ng-disabled="state.isWorking"
+                data-ng-click="loadMeasurements()">Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <div class="row">
     <div class="col-md-12">
       <nvd3 options="options" data="data"></nvd3>
     </div>
