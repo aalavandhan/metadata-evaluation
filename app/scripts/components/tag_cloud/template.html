@@ -1,0 +1,78 @@
+<div>
+  <div class="row">
+    <div class="col-md-4">
+      <div c-doc-type-filter data-document-type="docType"></div>
+    </div>
+
+    <div class="col-md-4">
+      <div c-entity-filter data-entity="entity"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group" data-ng-init="countType='doc'">
+        <label>Aggregation Type</label>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="countType" value="doc" data-ng-model="countType" />Document Count &nbsp;
+          </label>
+          <label>
+            <input type="radio" name="countType" value="occurrence" data-ng-model="countType" />Occurrence count &nbsp;
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group" data-ng-init="tokenization='raw'">
+        <label>Raw vs Tokenized</label>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="tokenization" value="raw" data-ng-model="tokenization" />Raw &nbsp;
+          </label>
+          <label>
+            <input type="radio" name="tokenization" value="token" data-ng-model="tokenization" />Tokenized &nbsp;
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Zoom Level</label>
+        <select data-ng-model="zoomLevel" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label>&nbsp;</label>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block pull-right"
+                data-ng-click="loadEntities()"
+                data-ng-disabled="state.isWorking">Refresh Tag Cloud</button>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tag-cloud"></div>
+    </div>
+  </div>
+</div>

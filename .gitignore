@@ -1,0 +1,15 @@
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/bower_components
+.bowerrc
+.editorconfig
+.gitattributes
+.jscsrc
+.jshintrc
+.travis.yml
+.yo-rc.json
+.DS_STORE
+*/.DS_STORE
+app/data/computed/*

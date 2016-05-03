@@ -1,0 +1,20 @@
+<div>
+  <div class="modal-body">
+    <center><img data-ng-src="data/size/{{data.key}}" /></center>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="5" class="text-center">Cluster Demarcation (Bytes)</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>[0, {{data.value[0] | number }}]</td>
+        <td>({{data.value[0] | number }}, {{data.value[1] | number }}]</td>
+        <td>({{data.value[1] | number }}, {{data.value[2] | number }}]</td>
+        <td>({{data.value[2] | number }}, {{data.value[3] | number }}]</td>
+        <td>({{data.value[3] | number }}, {{data.value[4]}}..Infinity]</td>
+      </tr>
+    </table>
+  </div>
+</div>

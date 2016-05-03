@@ -1,0 +1,21 @@
+<div>
+  <div class="row">
+    <div class="col-md-4" data-ng-repeat="q in queries">
+      <div class="row">
+        <div class="col-md-9">
+          <tags-input ng-model="q.tags" add-on-paste="true" select-first-match="false">
+            <auto-complete source="loadTags($query)"></auto-complete>
+          </tags-input>
+        </div>
+        <div class="col-md-1" style="padding-top: 10px;text-align: left;">
+          <i class="fa fa-times cursor" data-ng-click="removeQuery($index)"></i>
+        </div>
+        <div class="col-md-2" data-ng-show="$index != queries.length - 1">
+          <div class="form-group" style="padding-top: 10px;">
+            <label>( AND )</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Min (Bytes)</th>
+        <th>Max (Bytes)</th>
+        <th>Median (Bytes)</th>
+        <th>Mean (Bytes)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr data-ng-repeat="o in clusterSummary">
+        <td>
+          <a data-ng-if="isClusterable(o.key)"
+             data-ng-click="openChart(o.key)"
+             data-ng-bind="o.key"></a>
+          <span data-ng-if="!isClusterable(o.key)" data-ng-bind="o.key"></span>
+        </td>
+        <td data-ng-bind="o.summary.min    | number"></td>
+        <td data-ng-bind="o.summary.max    | number"></td>
+        <td data-ng-bind="o.summary.median | number"></td>
+        <td>
+          <span data-ng-bind="o.summary.mean"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

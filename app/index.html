@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+    <link rel="stylesheet" href="bower_components/leaflet-dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/leaflet-draw/dist/leaflet.draw.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  </head>
+  <body ng-app="metadataEvaluationApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div id="c-notification">
+      <div data-c-global-loader></div>
+      <br /><br />
+      <div data-c-flash></div>
+    </div>
+
+    <div>
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/">Metadata-Evaluation</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a ng-href="#/about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="min-height: 800px;">
+      <div ng-view></div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p><span class="glyphicon glyphicon-heart"></span> from Team #1</p>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/at-table/dist/angular-table.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-slider/src/slider.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/leaflet-dist/leaflet.js"></script>
+    <script src="bower_components/topojson/topojson.js"></script>
+    <script src="bower_components/datamaps/dist/datamaps.all.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/ui-leaflet/dist/ui-leaflet.js"></script>
+    <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="bower_components/leaflet-draw/dist/leaflet.draw-src.js"></script>
+    <script src="bower_components/ui-leaflet-draw/dist/ui-leaflet-draw.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/overrides.js"></script>
+        <script src="scripts/plugins/infinite_scroll.js"></script>
+        <script src="scripts/plugins/d3.layout.cloud.js"></script>
+        <script src="scripts/plugins/d3.slider.js"></script>
+        <script src="scripts/plugins/fd_cloud.js"></script>
+
+        <!-- Additional modules -->
+        <script src="bower_components/at-table/dist/angular-table.min.js"></script>
+        <!-- UTIL -->
+        <script src="scripts/util/controllers/module.js"></script>
+        <script src="scripts/util/controllers/static_page_controller.js"></script>
+        <script src="scripts/util/controllers/modal_controller.js"></script>
+
+        <script src="scripts/util/services/module.js"></script>
+        <script src="scripts/util/services/state_handler.js"></script>
+        <script src="scripts/util/services/paginator.js"></script>
+
+        <script src="scripts/util/directives/module.js"></script>
+        <script src="scripts/util/directives/global_loader.js"></script>
+
+        <script src="scripts/util/module.js"></script>
+        <!-- Data -->
+        <script src="scripts/data/module.js"></script>
+        <script src="scripts/data/document.js"></script>
+        <script src="scripts/data/metadata.js"></script>
+        <script src="scripts/data/aggregator.js"></script>
+        <script src="scripts/data/entity.js"></script>
+        <script src="scripts/data/sweet.js"></script>
+        <script src="scripts/data/search.js"></script>
+        <script src="scripts/data/size.js"></script>
+        <script src="scripts/data/type.js"></script>
+        <script src="scripts/data/language.js"></script>
+
+        <!-- Components -->
+        <script src="scripts/components/d3/module.js"></script>
+
+        <script src="scripts/components/filters/module.js"></script>
+        <script src="scripts/components/filters/entity_directive.js"></script>
+        <script src="scripts/components/filters/doc_type_directive.js"></script>
+        <script src="scripts/components/filters/magnification_directive.js"></script>
+        <script src="scripts/components/filters/concept_directive.js"></script>
+
+        <script src="scripts/components/tag_cloud/module.js"></script>
+        <script src="scripts/components/tag_cloud/controller.js"></script>
+        <script src="scripts/components/tag_cloud/directive.js"></script>
+
+        <script src="scripts/components/flash/module.js"></script>
+        <script src="scripts/components/flash/controller.js"></script>
+        <script src="scripts/components/flash/directive.js"></script>
+
+        <script src="scripts/components/size/module.js"></script>
+        <script src="scripts/components/size/controller.js"></script>
+        <script src="scripts/components/size/directive.js"></script>
+
+        <script src="scripts/components/type_list/module.js"></script>
+        <script src="scripts/components/type_list/controller.js"></script>
+        <script src="scripts/components/type_list/directive.js"></script>
+
+
+        <script src="scripts/components/size_dist/module.js"></script>
+        <script src="scripts/components/size_dist/controller.js"></script>
+        <script src="scripts/components/size_dist/directive.js"></script>
+
+        <script src="scripts/components/crawler/module.js"></script>
+        <script src="scripts/components/crawler/controller.js"></script>
+        <script src="scripts/components/crawler/directive.js"></script>
+
+        <script src="scripts/components/parser/module.js"></script>
+        <script src="scripts/components/parser/controller.js"></script>
+        <script src="scripts/components/parser/directive.js"></script>
+
+        <script src="scripts/components/language/module.js"></script>
+        <script src="scripts/components/language/controller.js"></script>
+        <script src="scripts/components/language/directive.js"></script>
+
+        <script src="scripts/components/ner/module.js"></script>
+        <script src="scripts/components/ner/controller.js"></script>
+        <script src="scripts/components/ner/directive.js"></script>
+
+        <script src="scripts/components/measurement/module.js"></script>
+        <script src="scripts/components/measurement/controller.js"></script>
+        <script src="scripts/components/measurement/directive.js"></script>
+
+        <script src="scripts/components/module.js"></script>
+        <!-- Sections -->
+        <script src="scripts/sections/home/module.js"></script>
+
+        <script src="scripts/sections/module.js"></script>
+        <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+
+    <script src="scripts/generated_templates.js"></script>
+</body>
+</html>

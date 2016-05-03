@@ -1,0 +1,17 @@
+<div data-ng-init="selected = { }">
+  <div data-ng-repeat="f in formats"
+       class="type-list"
+       data-ng-click="f.$selected = !f.$selected; loadSelectedList()"
+       data-ng-class="{ 'selected': f.$selected }"
+       data-ng-if="multiple != 'FALSE'">
+    {{ f.key }}
+  </div>
+
+  <div data-ng-repeat="f in formats"
+       class="type-list"
+       data-ng-click="select(f)"
+       data-ng-class="{ 'selected': (selected.key == f.key) }"
+       data-ng-if="multiple == 'FALSE'">
+    {{ f.key }}
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Languages by Type (Polar Full Dump)</label>
+        <select ng-model="selectedType" class="form-control">
+          <option ng-repeat="d in contentTypes" value="{{d}}" data-ng-bind="d"></option>
+        </select>
+      </div>
+
+      <nvd3 options="options" data="data"></nvd3>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Language diversity</h3>
+
+      <p>
+        This visualization demonstrates the language diversity of each mime type  in the polar dataset.
+        Tika-Pythos's language detector with prenuptial language profiles was run on 1.5M files in the polar-fulldump dataset to produce the following language diversity by type.
+
+        <table class="table table-bodered">
+          <tr><th>be</th><td>Belarusian</td></tr>
+          <tr><th>ca</th><td>Catalan</td></tr>
+          <tr><th>da</th><td>Danish</td></tr>
+          <tr><th>de</th><td>German</td></tr>
+          <tr><th>eo</th><td>Esperanto</td></tr>
+          <tr><th>et</th><td>Estonian</td></tr>
+          <tr><th>el</th><td>Greek</td></tr>
+          <tr><th>en</th><td>English</td></tr>
+          <tr><th>es</th><td>Spanish</td></tr>
+          <tr><th>fi</th><td>Finnish</td></tr>
+          <tr><th>fr</th><td>French</td></tr>
+          <tr><th>fa</th><td>Persian</td></tr>
+          <tr><th>gl</th><td>Galician</td></tr>
+          <tr><th>hu</th><td>Hungarian</td></tr>
+          <tr><th>is</th><td>Icelandic</td></tr>
+          <tr><th>it</th><td>Italian</td></tr>
+          <tr><th>lt</th><td>Lithuanian</td></tr>
+          <tr><th>nl</th><td>Dutch</td></tr>
+          <tr><th>no</th><td>Norwegian</td></tr>
+          <tr><th>pl</th><td>Polish</td></tr>
+          <tr><th>pt</th><td>Portuguese</td></tr>
+          <tr><th>ro</th><td>Romanian</td></tr>
+          <tr><th>ru</th><td>Russian</td></tr>
+          <tr><th>sk</th><td>Slovakian</td></tr>
+          <tr><th>sl</th><td>Slovenian</td></tr>
+          <tr><th>sv</th><td>Swedish</td></tr>
+          <tr><th>th</th><td>Thai</td></tr>
+          <tr><th>uk</th><td>Ukrainian</td></tr>
+        </table>
+      </p>
+    </div>
+  </div>
+
+
+</div>

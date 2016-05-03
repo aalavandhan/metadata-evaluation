@@ -1,0 +1,28 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <nvd3 options="options"
+            data="data"></nvd3>
+    </div>
+  </div>
+
+  <div>
+    <table class="table table-striped" style="font-size: 10px;">
+      <tr>
+        <td data-ng-repeat="b in buckets">
+          <b>BK: {{ $index }}</b> <br />
+
+          {{ b }} - {{ buckets[$index + 1] || 'Inf' }} Bytes
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-12">
+      <div c-type-list data-selected="types"></div>
+    </div>
+  </div>
+</div>

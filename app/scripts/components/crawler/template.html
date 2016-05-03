@@ -1,0 +1,62 @@
+<div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Crawled Domain</label>
+        <select ng-model="selectedDomain" class="form-control">
+          <option ng-repeat="d in domains" value="{{d}}" data-ng-bind="d"></option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6">
+      <nvd3 options="options" data="data"></nvd3>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Mime diversity vs Domain</h3>
+
+      <p>
+        This visualization demonstrates the mime diversity W.R.T domains crawled.
+        The degree of mime diversity of for a given domain is a good indicator of crawl success.
+      </p>
+    </div>
+  </div>
+
+  <hr />
+
+
+  <div class="row">
+    <div class="col-md-6" data-ng-show="titles.length > 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Doc Count (%)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr data-ng-repeat="t in titles">
+            <td data-ng-bind="t.key"></td>
+            <td data-ng-bind="t.norm * 100  | number : 2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Page titles</h3>
+
+      <p>
+        <b>302 Found, 301 Moved Permanently, Document Moved</b> on page are indicators
+        of crawl failures.
+      </p>
+    </div>
+  </div>
+
+</div>
